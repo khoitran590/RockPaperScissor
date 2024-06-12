@@ -2,10 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=git , initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    
+    <script>
+        let humanScore = 0;
+        let computerScore = 0;
+        
+        function getComputerChoice(){
+             let choice = ["rock", "paper", "scissor"];
+             let result = Math.floor(Math.random() * choice); //math floor rounds down the number and num indicates an interger;
+             return result;
+        }
+        function getHumanChoice(){
+            let choice = prompt("Please choose Rock, Paper, or Scissor");
+            return choice.toLowerCase();
+
+        }
+        function playground(humanChoice, computerChoice){
+            humanChoice = humanChoice.toLowerCase();
+            if (humanChoice === computerChoice){
+                console.log("Its a tie, both choose ${humanChoice}");
+            } else if (humanChoice === "rock" && computerChoice === "paper"){
+                console.log("CPU wins!");
+                computerChoice++;
+            } else if (humanChoice === "scissor" && computerChoice === "rock"){
+                console.log("CPU wins!");
+                computerChoice++;
+            } else if (humanChoice === "paper" && computerChoice === "scissor"){
+                console.log("CPU wins!");
+                computerChoice++;
+            } else {
+                console.log("You win!");
+                humanChoice++;
+            }
+        }
+
+        function playGame(){
+            let humanScore = 0;
+            let computerScore = 0;
+            for(let i = 0; i < 5; i++){
+                const humanSelection = getHumanChoice();
+                const computerSelection = getComputerChoice();
+                playground(humanSelection, computerSelection);
+            }
+            if (humanScore > computerScore){
+                console.log("You win!");
+            } else if(humanScore < computerScore){
+                console.log("CPU wins!");
+            } else {
+                console.log("Tie!");
+            }
+        }
+
+        playGame();
+
+    </script>
 </body>
 </html>
